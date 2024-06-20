@@ -16,3 +16,6 @@ Edit the path variable in the script then run the script in the
 ```bash
 .\run_server.ps1
 ```
+
+## Mobile screencapture
+![Screeshot for mobile](https://github.com/pillaiharish/go-file-explorer/blob/main/mobile_screenshot.jpeg)
