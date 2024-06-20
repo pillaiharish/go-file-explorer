@@ -25,7 +25,7 @@ func FileExplorerHandler(basePath string) http.HandlerFunc {
 		for _, file := range files {
 			fileInfos = append(fileInfos, FileInfo{
 				Name:  file.Name(),
-				Path:  filepath.Join("/files", file.Name()),
+				Path:  filepath.ToSlash(filepath.Join("/files", file.Name())),
 				IsDir: file.IsDir(),
 			})
 		}
@@ -37,7 +37,7 @@ func FileExplorerHandler(basePath string) http.HandlerFunc {
 
 func FileHandler(basePath string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		filePath := filepath.Join(basePath, r.URL.Path[len("/files/"):])
+		filePath := filepath.Join(basePath, filepath.FromSlash(r.URL.Path[len("/files/"):]))
 		http.ServeFile(w, r, filePath)
 	}
 }
