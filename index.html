@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>File Explorer</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>File Explorer</h1>
+            <div class="file-list">
+                {{range .}}
+                    <a href="{{.Path}}" class="file-link" target="{{if .IsDir}}_self{{else}}_blank{{end}}">
+                        <span class="file-icon">{{if .IsDir}}📁{{else}}📄{{end}}</span> {{.Name}}
+                    </a><br>
+                {{end}}
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
